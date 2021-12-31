@@ -1,4 +1,4 @@
-package com.zhouyu.service;
+package com.jackey.service;
 
 public interface OrderService {
 

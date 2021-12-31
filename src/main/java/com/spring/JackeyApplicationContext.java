@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ZhouyuApplicationContext {
+public class JackeyApplicationContext {
 
     private ConcurrentHashMap<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, Object> singletonObjects = new ConcurrentHashMap<>();
     private List<BeanPostProcessor> beanPostProcessorList = new ArrayList<>();
 
     // Spring启动流程
-    public ZhouyuApplicationContext(Class configClass) {
+    public JackeyApplicationContext(Class configClass) {
         // 扫描类 得到 BeanDefinition
         scan(configClass);
 
@@ -148,7 +148,7 @@ public class ZhouyuApplicationContext {
     private List<Class> genBeanClasses(String packagePath) {
         List<Class> beanClasses = new ArrayList<>();
 
-        ClassLoader classLoader = ZhouyuApplicationContext.class.getClassLoader();
+        ClassLoader classLoader = JackeyApplicationContext.class.getClassLoader();
         packagePath = packagePath.replace(".", "/");
         URL resource = classLoader.getResource(packagePath);
         File file = new File(resource.getFile());
@@ -160,7 +160,7 @@ public class ZhouyuApplicationContext {
 //                System.out.println(fileName);
                 if (fileName.endsWith(".class")) {
                     String className = fileName.substring(fileName.indexOf("com"), fileName.indexOf(".class"));
-                    className = className.replace("\\", ".");
+                    className = className.replace("/", ".");
 //                    System.out.println(className);
 
                     try {

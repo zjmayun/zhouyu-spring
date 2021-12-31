@@ -1,7 +1,7 @@
-package com.zhouyu;
+package com.jackey;
 
 import com.spring.ComponentScan;
 
-@ComponentScan("com.zhouyu.service")
+@ComponentScan("com.jackey.service")
 public class AppConfig {
 }
